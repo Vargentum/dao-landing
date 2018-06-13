@@ -1,0 +1,40 @@
+@import 'helpers'
+
+*,*:before,*:after
+	box-sizing: border-box
+
+html, body 
+	reset-box()
+	background: $c.body
+	font-family: $global.family.text
+	font-size: $global.typography.base-size
+	font-weight: $global.typography.base-weight
+	line-height: $global.typography.base-height
+	color: $c.text
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+#app
+	height: 100%
+
+h1,h2,h3,h4,h5,h6,b,strong
+	color: $c.title
+	
+h2
+	color: $c.brand
+	text-transform: uppercase
+	font-size: .8rem
+	margin-top: 3rem
+	margin-bottom .25rem
+
+p
+	margin-top: 0
+
+.is-container
+	max-width: $global.container.max-width
+	min-width: $global.container.min-width
+	margin: auto
+	padding: 0 10px
+
+.is-error
+	color: $c.error

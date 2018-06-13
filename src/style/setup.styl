@@ -1,0 +1,124 @@
+$setup = {
+  align: {
+    x: {
+      '1': flex-start
+      '2': center
+      '3': flex-end
+      '13': space-between
+    }
+    y: {
+      '1': flex-start
+      '2': center
+      '3': flex-end
+      '13': stretch
+      '21': baseline
+    }
+  }
+  dir: {
+    x: row
+    y: column
+    rx: row-reverse
+    ry: column-reverse
+  }
+  box: {
+    margin: {
+       m: margin
+      mx: margin-x
+      my: margin-y
+      mt: margin-top
+      mr: margin-right
+      mb: margin-bottom
+      ml: margin-left
+    }
+    padding: {
+       p: padding
+      px: padding-x
+      py: padding-y
+      pt: padding-top
+      pr: padding-right
+      pb: padding-bottom
+      pl: padding-left
+    } 
+  }
+  patterns: {
+    center: {align: 2 2}
+    ctr-fill: {
+      align: 2 2
+      fill: 1
+      dir: y
+    }
+  }
+}
+
+$ptrn = $setup.patterns
+
+
+get-real-basis(colRelation)
+  return colRelation * 100%
+
+
+-set-align()
+  y = arguments[0]
+  x = arguments[1] || arguments[0]
+  justify-content: $setup.align.x['' + x]
+  align-items: $setup.align.y['' + y]
+
+-set-dir(d)
+  flex-direction: $setup.dir[d]
+
+defaultBasis = 0%
+-set-fill(grow, basis = defaultBasis, safari-auto-basis = true)
+  if grow is auto
+    flex 0 1 auto
+  else
+    flex grow 0 basis
+    max-width 100% //fix FF and IE content overflowing issue
+    min-width: 0  //fix ellipsis bug inside flex containers at FF & Chorme 48+
+
+    // if basis is defaultBasis and safari-auto-basis
+    //   .safari &
+    //   .ios &
+    //     flex-basis: auto
+
+
+-set-grid-relative()
+  flex-wrap: wrap
+  for col, i in arguments
+    &>*:nth-child({i+1}n)
+      -set-fill col
+
+-set-grid()
+  flex-wrap: wrap
+  for col, i in arguments
+    &>*:nth-child({i+1}n)
+      -set-fill(0, get-real-basis(col))
+
+-set-box()
+  for key, mul in arguments
+    if mul or mul is 0
+      prop = $setup.box.margin[key] || $setup.box.padding[key]
+      {prop}: mul * $gap
+
+-set-gap(value, reversed = false)
+  for dir, mul in value //x y  
+    if mul or mul is 0
+      {dir}Gap: (mul * $gap) reversed
+
+
+setup(config = {})
+  display flex
+  for prop, value in config
+    if prop is gap and config.dir is rx or config.dir is ry
+      -set-gap(value, true) //set reversed gap
+    else
+      -set-{prop}: value
+
+rSetup(configs = {}, mobile-first = true)
+  for name, config in configs
+    if $bp[name] and config
+      if mobile-first
+        +min($bp[name])
+          setup(config)
+      else 
+        +max($bp[name])
+          setup(config)

@@ -6,30 +6,31 @@ import style from './style.styl';
 const FEATURES = [
 	{icon: '', text: 'You invest is secured by tickets at bulk price'},
 	{icon: '', text: 'We sell tickets on your behalf at retail price'},
-	{icon: '', text: 'Choose the sale strategy'}
+	{icon: '', text: 'Choose the sale strategy', tip: '(to minimize your risk, or maximize profits)'}
 ];
 
-function ListItem ({icon, text}) {
-	return <li>
-		<span>{icon}</span>
-		<b>{text}</b>
+function ListItem ({icon, text, tip}) {
+	return <li class={style.featuresListItem}>
+		<span class={style.featuresListItemIcon}>{icon}</span>
+		<b class={style.featuresListItemText}>{text}</b>
+		{tip && <span class={style.featuresListItemTip}>{tip}</span>}
 	</li>;
 }
 
 function PotentialInvestmentReturnExample () {
-	return <div>
-		<div>
-			<span>Investment amount</span>
-			<b>$1,000</b>
+	return <div class={style.investmentExample}>
+		<div class={style.investmentExampleColumn}>
+			<span class={style.investmentExampleTitle}>Investment amount</span>
+			<b class={style.investmentExampleSum}>$1,000</b>
 		</div>
-		<div>
-			<div>
-				<span>Potential return</span>
-				<sub>Within 3-6 months</sub>
+		<div class={style.investmentExampleColumn}>
+			<div  class={style.investmentExampleTipWrap}>
+				<span class={style.investmentExampleTitle}>Potential return</span>
+				<span class={style.investmentExampleTip}>Within 3-6 months</span>
 			</div>
-			<b>$1,500 — $2,000</b>
+			<b class={style.investmentExampleSum}>$1,500 — $2,000</b>
 		</div>
-		<footer>* This is an example. Your actual return will depend on a particular event.</footer>
+		<footer class={style.investmentExampleFooter}>* This is an example. Your actual return will depend on a particular event.</footer>
 	</div>;
 }
 
@@ -46,7 +47,7 @@ export default () => {
 			<p>Conveniently synergize professional collaboration and idea-sharing with 24/365 internal or "organic" sources. Energistically coordinate high standards in infomediaries via open-source methods of empowerment. Dynamically enable.</p>
 			<h2>How it works</h2>
 			<p>We invite you to invest in upfront costs of bringing a top artist. Up to 100% ROI</p>
-			<ul>
+			<ul class={style.featuresList}>
 				{FEATURES.map(mapRender(ListItem))}
 			</ul>
 			<PotentialInvestmentReturnExample />

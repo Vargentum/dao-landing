@@ -1,2 +1,93 @@
 @import '~style/helpers';
 
+
+/* -----------------------------
+  Features list
+----------------------------- */
+.featuresList 
+  reset-list()
+  rSetup({
+    md: {
+      dir: x
+      gap: {y: 0, x: 2}
+    }
+  })
+  yGap($gap * 4)
+  text-align: center
+  line-height: 1.2
+  &, *
+    color: $c.success
+  
+.featuresListItem
+  setup({
+    align: 2 1
+    dir: y
+    gap: {y: 2}
+  })
+  -set-fill: 1
+
+.featuresListItemIcon
+  circle: 8rem
+  color: $c.brand
+  border: 2px solid $c.brand
+
+.featuresListItemText
+  font-weight: bold
+  font-size 2rem
+  
+.featuresListItemTip
+  font-size .8rem
+
+
+/* -----------------------------
+  Investment Example
+----------------------------- */
+.investmentExample 
+  margin: 5rem auto
+  +max(md)
+    yGap 1rem
+    text-align: center
+  +min(md)
+    width: 66%
+  +min(lg)
+    width: 50%
+
+.investmentExampleColumn
+  rSetup({
+    xxs: {
+      align: 2 2
+      dir: y
+      gap: {y: 2}
+    }
+    sm: {
+      align: 1 1
+      gap: {y: 3}
+    }
+  })
+  +min(sm)
+    display: inline-flex
+    width: 50%
+  
+.investmentExampleTitle
+  color: $c.brand
+  text-transform: uppercase
+  
+.investmentExampleSum
+  color: $c.title
+  font-size 2rem
+  font-weight 300
+
+.investmentExampleTipWrap
+  position relative
+
+.investmentExampleTip
+  absolute top 100%
+  display: block
+  font-size: .8rem
+  color: $c.brand
+  
+.investmentExampleFooter
+  margin-top 2rem
+  font-size: .8rem
+  color: $c.brand
+  
