@@ -1,9 +1,20 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 import Header from './header';
 import Home from './home';
 import Profile from './profile';
+
+const FIREBASE_CONFIG = {
+	apiKey: 'AIzaSyBcfEg5fw0pu1_F0yLwG0g14b4IElz7zhE',
+	authDomain: 'wedao-mvp-7fcb7.firebaseapp.com',
+	databaseURL: 'https://wedao-mvp-7fcb7.firebaseio.com',
+	projectId: 'wedao-mvp-7fcb7',
+	storageBucket: 'wedao-mvp-7fcb7.appspot.com',
+	messagingSenderId: '555465437086'
+};
 
 export default class App extends Component {
 	/** Gets fired when the route changes.
@@ -13,6 +24,12 @@ export default class App extends Component {
 	handleRoute = e => {
 		this.currentUrl = e.url;
 	};
+
+	componentDidMount () {
+		if (!firebase.apps.length) {
+			firebase.initializeApp(FIREBASE_CONFIG);
+		}
+	}
 
 	render() {
 		return (
