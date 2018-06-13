@@ -5,7 +5,6 @@ import 'firebase/database';
 
 import Header from './header';
 import Home from './home';
-import Profile from './profile';
 
 const FIREBASE_CONFIG = {
 	apiKey: 'AIzaSyBcfEg5fw0pu1_F0yLwG0g14b4IElz7zhE',
@@ -37,8 +36,6 @@ export default class App extends Component {
 				<Header />
 				<Router onChange={this.handleRoute}>
 					<Home path="/" />
-					<Profile path="/profile/" user="me" />
-					<Profile path="/profile/:user" />
 				</Router>
 			</div>
 		);

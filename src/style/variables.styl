@@ -1,0 +1,81 @@
+$global = {
+
+  container: {
+    elastic-width: 1370px
+    xs-gap-x: 20px
+  }
+  
+  family: {
+    text: unquote('Roboto, sans-serif')
+    title: unquote('Roboto, sans-serif')
+  }
+  
+  title: { 
+    // control classes: .util-t--{SIZE}
+    XXL : 20px
+    XL  : 18px
+    L   : 16px
+    M   : 14px
+    S   : 12px
+    XS  : 10px
+    XXS : 8px
+  }
+  
+  typography: {
+    base-size: 14px
+    base-weight: 400
+    base-height: 1.6
+  }
+  
+  color: {
+    brand: #12AFF2
+    body: #fff
+    text: #8E8E8E
+    text-muted: #a7a7a7
+    title: #383838
+    border: #cdcdcd
+    success: #27a4b0
+    error: #ed1c24
+  }
+
+  grid: {
+    columns: 12
+    base-gap: 20px
+  }
+  
+  namespace: {
+    utils: 'util'
+    flex-tools: 'f'
+  }
+  
+  path: {
+    img: 'img/'
+  }
+
+  transition: 350ms
+  gap: 5px
+
+  //similar to bootstrap
+  breakpoints: {
+    lg: 1201px
+    md: 961px
+    sm: 769px
+    xs: 481px
+    xxs:320px
+  }
+  
+  h: {
+    input: 28px
+    textarea: 85px
+    btn: 36px
+  }
+  
+}
+
+
+// shortcuts
+$g = $global
+$gap = $global.gap
+$bp = $global.breakpoints
+$c = $global.color
+

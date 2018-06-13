@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import {mapRender} from '../utils';
 import {SubscriptionForm} from '../forms';
-import style from './style.less';
+import style from './style.styl';
 
 const FEATURES = [
 	{icon: '', text: 'You invest is secured by tickets at bulk price'},

@@ -1,0 +1,25 @@
+@import 'helpers'
+
+*,*:before,*:after
+	box-sizing: border-box
+
+html, body 
+	padding: 0
+	margin: 0
+	background: #fff
+	font-family: $global.family.text
+	font-size: $global.typography.base-size
+	font-weight: $global.typography.base-weight
+	line-height: $global.typography.base-height
+	color: $global.color.text
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+#app
+	height: 100%
+
+h1,h2,h3,h4,h5,h6,b,strong
+	color: $global.color.title
+	
+.is-error
+	color: $global.color.error
